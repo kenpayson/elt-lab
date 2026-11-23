@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg_nyc_311__requests
+    description: Latest observation of each 311 request from successful loads, typed and cleaned.
+    columns:
+      - name: request_id
+        tests: [unique, not_null]
+      - name: created_at
+        tests: [not_null]
+      - name: borough
+        tests:
+          - accepted_values:
+              values: ['MANHATTAN', 'BROOKLYN', 'QUEENS', 'BRONX', 'STATEN ISLAND', 'UNSPECIFIED']
+              config:
+                severity: warn       # new values = warning, not a failed build

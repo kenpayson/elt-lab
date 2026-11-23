@@ -1,0 +1,15 @@
+name: elt_lab
+version: "1.0.0"
+profile: elt_lab
+
+model-paths: ["models"]
+test-paths: ["tests"]
+
+models:
+  elt_lab:
+    staging:
+      +materialized: view     # cheap, always current
+      +schema: staging
+    marts:
+      +materialized: table    # what Tableau reads
+      +schema: marts

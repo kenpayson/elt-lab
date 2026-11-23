@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: fct_requests
+    description: One row per 311 request. Grain = request_id.
+    columns:
+      - name: request_id
+        tests: [unique, not_null]
+      - name: agency_code
+        tests:
+          - relationships:
+              to: ref('dim_agency')
+              field: agency_code
+  - name: dim_agency
+    description: One row per agency.
+    columns:
+      - name: agency_code
+        tests: [unique]
+  - name: agg_daily_borough
+    description: Grain = created_date + borough.

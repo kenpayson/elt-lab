@@ -3,9 +3,9 @@ __pycache__/
 *.duckdb
 *.duckdb.wal
 data/
-dbt/target/
-dbt/logs/
-dbt/dbt_packages/
+dbt_project/target/
+dbt_project/logs/
+dbt_project/dbt_packages/
 logs/
 .env
 profiles.yml
